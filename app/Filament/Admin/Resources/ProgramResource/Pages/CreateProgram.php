@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateProgram extends CreateRecord
 {
     protected static string $resource = ProgramResource::class;
+
+    public function getMaxContentWidth(): ?string
+    {
+        return 'full';
+    }
 }

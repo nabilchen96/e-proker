@@ -18,6 +18,7 @@ class Program extends Model
         'start_week',
         'end_month',
         'end_week',
+        'status',
         'created_by',
     ];
 

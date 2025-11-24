@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Admin\Resources\YearResource\Pages;
+namespace App\Filament\Admin\Resources\ReportResource\Pages;
 
-use App\Filament\Admin\Resources\YearResource;
+use App\Filament\Admin\Resources\ReportResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditYear extends EditRecord
+class EditReport extends EditRecord
 {
-    protected static string $resource = YearResource::class;
+    protected static string $resource = ReportResource::class;
 
     protected function getHeaderActions(): array
     {

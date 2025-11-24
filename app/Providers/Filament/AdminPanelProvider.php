@@ -27,6 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login() // Tambahkan ini
+            ->homeUrl('/admin/dashboard')
             ->colors([
                 'primary' => Color::Amber,
             ])

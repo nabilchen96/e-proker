@@ -75,6 +75,16 @@ class ProgramResource extends Resource
                                 // 5 => 'Week 5',
                             ])
                             ->required(),
+
+                        Forms\Components\Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                'Belum' => 'Belum',
+                                'Proses' => 'Proses',
+                                'Selesai' => 'Selesai',
+                            ])
+                            ->required(),
+
                     ])->columns(2),
 
                 Forms\Components\Hidden::make('created_by')
@@ -124,10 +134,33 @@ class ProgramResource extends Resource
                     ->formatStateUsing(fn ($record) =>
                         "Month {$record->start_month} [Week {$record->start_week}] → Month {$record->end_month} [Week {$record->end_week}]"
                     ),
+                
+                Tables\Columns\BadgeColumn::make('status')
+                    ->label('Status')
+                    ->colors([
+                        'danger' => 'Belum',
+                        'warning' => 'Proses',
+                        'success' => 'Selesai',
+                    ])
+                    ->sortable(),
             ])
-            ->filters([])
+            ->filters([
+                Tables\Filters\SelectFilter::make('unit_id')
+                    ->label('Filter Unit')
+                    ->relationship('unit', 'unit')
+                    ->searchable()
+                    ->preload(),
+
+                Tables\Filters\SelectFilter::make('year_id')
+                    ->label('Filter Tahun')
+                    ->relationship('year', 'year')
+                    ->searchable()
+                    ->preload(),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            ])->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 

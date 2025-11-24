@@ -42,4 +42,9 @@ class Dashboard extends Page
             'xl' => 1,
         ];
     }
+
+    public function getMaxContentWidth(): ?string
+    {
+        return 'full';
+    }
 }

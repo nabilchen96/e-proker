@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Admin\Resources\ProgramResource\Pages;
+namespace App\Filament\Admin\Resources\ReportResource\Pages;
 
-use App\Filament\Admin\Resources\ProgramResource;
+use App\Filament\Admin\Resources\ReportResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListPrograms extends ListRecords
+class ListReports extends ListRecords
 {
-    protected static string $resource = ProgramResource::class;
+    protected static string $resource = ReportResource::class;
 
     protected function getHeaderActions(): array
     {
