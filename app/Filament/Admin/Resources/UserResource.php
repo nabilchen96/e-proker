@@ -44,10 +44,15 @@ class UserResource extends Resource
                             ->required()
                             ->label('Role'),
 
+                        Forms\Components\Select::make('unit_id')
+                            ->label('Unit')
+                            ->relationship('unit', 'unit')
+                            ->required(),
+
                         Forms\Components\TextInput::make('password')
                             ->password()
-                            ->required(fn (string $context): bool => $context === 'create')
-                            ->dehydrateStateUsing(fn ($state) => filled($state) ? bcrypt($state) : null)
+                            ->required(fn(string $context): bool => $context === 'create')
+                            ->dehydrateStateUsing(fn($state) => filled($state) ? bcrypt($state) : null)
                             ->label('Password'),
                     ])
                     ->columns(2) // opsional
@@ -74,11 +79,16 @@ class UserResource extends Resource
                     ->searchable()
                     ->sortable(),
 
+                Tables\Columns\TextColumn::make('unit.unit')
+                    ->label('Unit')
+                    ->sortable()
+                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Dibuat Pada')
                     ->dateTime('d M Y - H:i')
                     ->sortable(),
-                ])
+            ])
             ->searchPlaceholder('Cari nama, email atau role...')
             ->defaultSort('created_at', 'desc')
             ->filters([
